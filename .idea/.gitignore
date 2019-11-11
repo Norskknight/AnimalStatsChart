@@ -12,4 +12,5 @@ artifacts/
 libraries/
 dataSources/
 /AnimalStatsChart.iml
-/target
+/.idea/
+/target/
