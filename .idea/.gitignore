@@ -4,3 +4,9 @@
 /encodings.xml
 /misc.xml
 /vcs.xml
+/modules.xml
+
+artifacts/
+libraries/
+dataSources/
+/AnimalStatsChart.iml
