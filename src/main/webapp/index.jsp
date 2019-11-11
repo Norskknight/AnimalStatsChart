@@ -1,5 +1,8 @@
+<%@include file="header.jsp" %>
+<c:set value="Home" var="title"/>
 <html>
-<body>
-<h2>Hello World!</h2>
-</body>
+    <%@include file="head.jsp" %>
+    <body>
+        <%@include file="nav.jsp" %>
+    </body>
 </html>

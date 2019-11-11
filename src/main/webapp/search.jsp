@@ -1,5 +1,5 @@
 <%@include file="header.jsp" %>
-<c:set value="UserPage" var="title"/>
+<c:set value="Search" var="title"/>
 <html>
 <%@include file="head.jsp" %>
 <body>
