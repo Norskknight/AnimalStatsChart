@@ -1,0 +1,8 @@
+<Context docBase="AnimalStats" path="/AnimalStats" reloadable="true">
+    <Realm className="org.apache.catalina.realm.JDBCRealm"
+           driverName="com.mysql.jdbc.Driver"
+           connectionURL="jdbc:mysql://localhost:3306/AnimalStatsChart?user=root&amp;password=student"
+           userTable="User" userNameCol="userName" userCredCol="userPass"
+           userRoleTable="Role" roleNameCol="name">
+    </Realm>
+</Context>

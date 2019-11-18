@@ -15,7 +15,7 @@ import java.util.Set;
 public class User implements Serializable {
 
     @Id
-    @Column(name = "idUsers")
+    @Column(name = "idUser")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
@@ -23,7 +23,7 @@ public class User implements Serializable {
     @Column(name = "UserName")
     private String userName;
 
-    @Column(name = "Password")
+    @Column(name = "UserPass")
     private String userPass;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
