@@ -24,7 +24,7 @@ public class Animal {
         this.intelligence = intelligence;
         this.user = user;
     }
-    
+
     @Id
     @Column(name = "idAnimalList")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

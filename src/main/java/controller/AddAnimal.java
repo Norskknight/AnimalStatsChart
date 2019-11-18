@@ -1,4 +1,4 @@
-package controler;
+package controller;
 
 import entity.Animal;
 import entity.User;
