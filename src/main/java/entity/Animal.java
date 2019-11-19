@@ -59,7 +59,7 @@ public class Animal {
     private int intelligence;
 
     @ManyToOne
-    @JoinColumn(name = "UserID", referencedColumnName = "idUser")
+    @JoinColumn(name = "UserId", referencedColumnName = "idUser")
     private User user;
 
     @Override

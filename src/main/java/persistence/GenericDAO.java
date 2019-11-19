@@ -71,7 +71,7 @@ public class GenericDAO<T> {
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
         query.select(root).where(builder.equal(root.get(propertyName),value));
-
+        logger.debug(query.getParameters());
         return session.createQuery(query).getResultList();
     }
 }

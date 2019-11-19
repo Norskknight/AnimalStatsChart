@@ -29,7 +29,7 @@ public class AddUser extends HttpServlet {
 
         //create user
         User user = new User();
-        logger.debug(req.getParameter("userName"));
+        logger.debug("name="+req.getParameter("userName"));
         user.setUserName(req.getParameter("userName"));
         // TODO: 11/18/19 salt password
         user.setUserPass(req.getParameter("userPass"));
@@ -40,11 +40,11 @@ public class AddUser extends HttpServlet {
         role.setUser(user);
         role.setName("user");
         user.addRole(role);
-        logger.debug(user.getRole().size());
+        logger.debug("size="+user.getRole().size());
 
         //add user with dao
         int userId = userDao.create(user);
-        logger.debug(userId);
+        logger.debug("id="+userId);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
         dispatcher.forward(req, resp);

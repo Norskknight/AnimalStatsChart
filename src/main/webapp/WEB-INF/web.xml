@@ -7,4 +7,38 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
   <display-name>Archetype Created Web Application</display-name>
+
+<login-config>
+<auth-method>FORM</auth-method>
+<form-login-config>
+  <form-login-page>/login.jsp</form-login-page>
+  <form-error-page>/loginError.jsp</form-error-page>
+</form-login-config>
+</login-config>
+
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>AdminRole</web-resource-name>
+      <url-pattern>/admin.jsp</url-pattern>
+    </web-resource-collection>
+
+    <auth-constraint>
+      <role-name>Admin</role-name>
+    </auth-constraint>
+  </security-constraint>
+
+  <security-role>
+    <role-name>Admin</role-name>
+  </security-role>
+  <security-role>
+    <role-name>user</role-name>
+  </security-role>
+
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+
+
+
+
 </web-app>

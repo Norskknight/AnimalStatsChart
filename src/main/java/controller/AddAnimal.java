@@ -26,11 +26,11 @@ public class AddAnimal extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         GenericDAO<User> userDao = new GenericDAO<>(User.class);
         GenericDAO<Animal> animalGenericDAO = new GenericDAO<>(Animal.class);
+        logger.debug("get list of users by id");
 
-        //get list of users by id
-        logger.debug(req.getRemoteUser());
-        List users = userDao.findByPropertyEqual("Userid",req.getRemoteUser());
-        User user = (User)users.get(0);
+        //get list of users by UserName
+        List<User> users = userDao.findByPropertyEqual("userName",req.getRemoteUser());
+        User user = users.get(0);
         logger.debug(user);
 
         //create animal from user information

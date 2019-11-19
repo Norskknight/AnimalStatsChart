@@ -24,6 +24,9 @@ public class Role {
     @JoinColumn(name = "UserId", referencedColumnName = "idUser", nullable = false)
     private User user;
 
+    @Column(name = "UserName")
+    private String userName;
+
     @Override
     public String toString() {
         return super.toString();
