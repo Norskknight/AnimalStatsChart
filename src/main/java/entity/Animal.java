@@ -26,41 +26,44 @@ public class Animal {
     }
 
     @Id
-    @Column(name = "idAnimalList")
+    @Column(name = "idAnimals")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @Column(name = "AnimalName")
+    @Column(name = "AnimalsName")
     private String name;
 
-    @Column(name = "AnimalClass")
+    @Column(name = "AnimalsClass")
     private String animalClass;
 
-    @Column(name = "AnimalFiction")
+    @Column(name = "AnimalsFiction")
     private String fiction;
 
-    @Column(name = "AnimalHealth")
+    @Column(name = "AnimalsHealth")
     private int health;
 
-    @Column(name = "AnimalStamina")
+    @Column(name = "AnimalsStamina")
     private int stamina;
 
-    @Column(name = "AnimalStrength")
+    @Column(name = "AnimalsStrength")
     private int strength;
 
-    @Column(name = "AnimalAgility")
+    @Column(name = "AnimalsAgility")
     private int agility;
 
-    @Column(name = "AnimalDexterity")
+    @Column(name = "AnimalsDexterity")
     private int dexterity;
 
-    @Column(name = "AnimalIntelligence")
+    @Column(name = "AnimalsIntelligence")
     private int intelligence;
 
     @ManyToOne
     @JoinColumn(name = "UserId", referencedColumnName = "idUser")
     private User user;
+
+    public Animal() {
+    }
 
     @Override
     public String toString() {

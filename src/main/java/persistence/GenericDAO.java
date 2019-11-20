@@ -22,6 +22,7 @@ public class GenericDAO<T> {
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
     }
+
     public int create(T entity) {
         int id;
         Session session = getSession();
@@ -44,7 +45,7 @@ public class GenericDAO<T> {
 
     public <T> T getById(int id){
         Session session = getSession();
-        @SuppressWarnings("unchecked") T entity = (T)session.get(type, id);
+        T entity = (T)session.get(type, id);
         session.close();
         return entity;
     }
@@ -71,7 +72,8 @@ public class GenericDAO<T> {
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
         query.select(root).where(builder.equal(root.get(propertyName),value));
-        logger.debug(query.getParameters());
-        return session.createQuery(query).getResultList();
+        List<T> results =session.createQuery(query).getResultList();
+        session.close();
+        return results;
     }
 }
