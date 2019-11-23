@@ -1,5 +1,6 @@
 package persistence;
 
+import entity.Animal;
 import entity.Role;
 import entity.User;
 import org.apache.logging.log4j.LogManager;
@@ -37,6 +38,9 @@ public class GenericDAOTest {
         role.setName("user");
         testUser.addRole(role);
 
+        Animal testAnimal = new Animal("a","a","a",1,2,3,4,5,6,testUser);
+
+        testUser.addAnimal(testAnimal);
     }
 
     @Test
