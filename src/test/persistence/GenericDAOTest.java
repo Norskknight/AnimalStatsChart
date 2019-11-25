@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
+import util.DatabaseUtility;
 
 import java.util.List;
 
@@ -15,22 +16,29 @@ import static org.junit.Assert.assertEquals;
 public class GenericDAOTest {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDAO<User> userDao;
+    private GenericDAO<Animal> animalDao;
     private List<User> users;
     private User testUser;
     int testUserId;
     Role role;
+    DatabaseUtility databaseUtility;
+
     @Before
     public void setUp() throws Exception{
+        databaseUtility = new DatabaseUtility();
+        databaseUtility.runSQL("cleardb.sql");
+
+        databaseUtility.runSQL("testdb.sql");
 
         logger.info("setup");
         userDao = new GenericDAO<User>(User.class);
+        animalDao = new GenericDAO<Animal>(Animal.class);
         testUser = new User();
         users = userDao.getAll();
 
-        testUser.setId(1);
+        testUser.setId(88);
         testUser.setUserName("testUser");
         testUser.setUserPass("testPass");
-
 
         role = new Role();
         role.setUser(testUser);
@@ -98,5 +106,12 @@ public class GenericDAOTest {
 
     @Test
     public void findByPropertyEqual() {
+    }
+
+    @Test
+    public void aveTest(){
+        logger.info("ave test");
+        List<Animal> average = animalDao.getAnimalAverageByGroup();
+        logger.info(average);
     }
 }

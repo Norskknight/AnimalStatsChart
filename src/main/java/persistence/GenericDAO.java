@@ -1,5 +1,6 @@
 package persistence;
 
+import entity.Animal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.*;
@@ -71,8 +72,25 @@ public class GenericDAO<T> {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
-        query.select(root).where(builder.equal(root.get(propertyName),value));
-        List<T> results =session.createQuery(query).getResultList();
+        query.select(root).where(builder.equal(root.get(propertyName), value));
+        List<T> results = session.createQuery(query).getResultList();
+        session.close();
+        return results;
+    }
+    public List<T> getAnimalAverageByGroup() {
+        logger.info("get ave");
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+
+        logger.info(root);
+        query.select(root.<T>get("name"));
+
+        query.groupBy(root.get("name"));
+
+        List<T> results = session.createQuery(query).getResultList();
+
         session.close();
         return results;
     }
