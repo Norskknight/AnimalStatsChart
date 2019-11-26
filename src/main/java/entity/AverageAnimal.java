@@ -5,54 +5,56 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 @Getter
 @Setter
-@Entity(name = "Animal")
-@Table(name = "AnimalList")
+@Entity(name = "AverageAnimal")
+@Table(name = "AverageAnimals")
 public class AverageAnimal {
 
     // TODO: 11/6/19 get Animal stats for an animal by name
 
     @Id
-    @Column(name = "idAverageAnimalList")
+    @Column(name = "idAnimals")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native",strategy = "native")
     private int id;
 
-    @Column(name = "AverageAnimalName")
+    @Column(name = "AnimalsName")
     private String name;
 
-    @Column(name = "AverageAnimalHealth")
+    @Column(name = "AnimalsClass")
+    private String animalClass;
+
+    @Column(name = "AnimalsFiction")
+    private String fiction;
+
+    @Column(name = "AnimalsHealth")
     private int health;
 
-    private ArrayList healthList;
 
-    @Column(name = "AverageAnimalStamina")
+    @Column(name = "AnimalsStamina")
     private int stamina;
 
-    private ArrayList staminaList;
 
-    @Column(name = "AverageAnimalStrength")
+    @Column(name = "AnimalsStrength")
     private int strength;
 
-    private ArrayList strengthList;
 
-    @Column(name = "AverageAnimalAgility")
+    @Column(name = "AnimalsAgility")
     private int agility;
 
-    private ArrayList agilityList;
-
-    @Column(name = "AverageAnimalDexterity")
+    @Column(name = "AnimalsDexterity")
     private int dexterity;
 
-    private ArrayList dexterityList;
 
-    @Column(name = "AverageAnimalIntelligence")
+    @Column(name = "AnimalsIntelligence")
     private int intelligence;
 
-    private ArrayList intelligenceList;
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 
-    // TODO: 11/6/19 create Standard Deviation removal method for array lists
+// TODO: 11/6/19 create Standard Deviation removal method for array lists
 }

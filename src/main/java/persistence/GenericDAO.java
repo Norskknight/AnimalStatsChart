@@ -1,13 +1,15 @@
 package persistence;
 
 import entity.Animal;
+import entity.AverageAnimal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.*;
 import org.hibernate.Transaction;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import org.hibernate.query.NativeQuery;
+
+import javax.persistence.Query;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 public class GenericDAO<T> {
@@ -80,18 +82,12 @@ public class GenericDAO<T> {
     public List<T> getAnimalAverageByGroup() {
         logger.info("get ave");
         Session session = getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type);
 
-        logger.info(root);
-        query.select(root.<T>get("name"));
+        String queryString = "select a.AnimalsName, max(a.AnimalsClass), max(a.AnimalsFiction), avg(a.AnimalsHealth), avg(a.AnimalsStamina),avg(a.AnimalsStrength), avg(a.AnimalsAgility), avg(a.AnimalsDexterity), avg(a.AnimalsIntelligence)from Animals a group by a.AnimalsName";
+        Query query = session.createNativeQuery(queryString);
 
-        query.groupBy(root.get("name"));
-
-        List<T> results = session.createQuery(query).getResultList();
-
+        List<T> averageAnimals = ((NativeQuery) query).list();
         session.close();
-        return results;
+        return averageAnimals;
     }
 }

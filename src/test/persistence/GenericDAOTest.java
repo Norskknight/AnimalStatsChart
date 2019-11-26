@@ -1,22 +1,30 @@
 package persistence;
 
 import entity.Animal;
+import entity.AverageAnimal;
 import entity.Role;
 import entity.User;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
 import util.DatabaseUtility;
 
+
+
+import java.util.Arrays;
 import java.util.List;
 
+
+import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 import static org.junit.Assert.assertEquals;
 
 public class GenericDAOTest {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDAO<User> userDao;
     private GenericDAO<Animal> animalDao;
+    private GenericDAO<AverageAnimal> averageAnimalDAO;
     private List<User> users;
     private User testUser;
     int testUserId;
@@ -111,7 +119,14 @@ public class GenericDAOTest {
     @Test
     public void aveTest(){
         logger.info("ave test");
-        List<Animal> average = animalDao.getAnimalAverageByGroup();
-        logger.info(average);
+        List average = animalDao.getAnimalAverageByGroup();
+        for ( Object animal : average) {
+            String list = Arrays.deepToString((Object[]) animal);
+            // TODO: 11/25/19 parse string enter into Averige animaltable 
+            JSONArray.parse(list);
+            
+            logger.info(listt.size());
+
+        }
     }
 }

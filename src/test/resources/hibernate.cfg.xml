@@ -19,7 +19,7 @@
         <mapping class="entity.User"/>
         <mapping class="entity.Animal"/>
         <mapping class="entity.Role"/>
-
+        <mapping class="entity.AverageAnimal"/>
     </session-factory>
 
 </hibernate-configuration>
