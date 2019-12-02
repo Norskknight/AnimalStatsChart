@@ -12,8 +12,21 @@ import javax.persistence.*;
 @Table(name = "AverageAnimals")
 public class AverageAnimal {
 
-    // TODO: 11/6/19 get Animal stats for an animal by name
+    public AverageAnimal() {
+    }
 
+    // TODO: 11/6/19 get Animal stats for an animal by name
+    public AverageAnimal(String name, String animalClass, String fiction, int health, int stamina, int strength, int agility, int dexterity, int intelligence) {
+        this.name = name;
+        this.animalClass = animalClass;
+        this.fiction = fiction;
+        this.health = health;
+        this.stamina = stamina;
+        this.strength = strength;
+        this.agility = agility;
+        this.dexterity = dexterity;
+        this.intelligence = intelligence;
+    }
     @Id
     @Column(name = "idAnimals")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -51,9 +64,22 @@ public class AverageAnimal {
     @Column(name = "AnimalsIntelligence")
     private int intelligence;
 
+
+
     @Override
     public String toString() {
-        return super.toString();
+        return "AverageAnimal{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", animalClass='" + animalClass + '\'' +
+                ", fiction='" + fiction + '\'' +
+                ", health=" + health +
+                ", stamina=" + stamina +
+                ", strength=" + strength +
+                ", agility=" + agility +
+                ", dexterity=" + dexterity +
+                ", intelligence=" + intelligence +
+                '}';
     }
 
 // TODO: 11/6/19 create Standard Deviation removal method for array lists

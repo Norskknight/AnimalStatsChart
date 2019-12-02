@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
+import static java.lang.Math.round;
 import static org.apache.logging.log4j.message.MapMessage.MapFormat.JSON;
 import static org.junit.Assert.assertEquals;
 
@@ -41,6 +42,7 @@ public class GenericDAOTest {
         logger.info("setup");
         userDao = new GenericDAO<User>(User.class);
         animalDao = new GenericDAO<Animal>(Animal.class);
+        averageAnimalDAO = new GenericDAO<AverageAnimal>(AverageAnimal.class);
         testUser = new User();
         users = userDao.getAll();
 
@@ -123,10 +125,13 @@ public class GenericDAOTest {
         for ( Object animal : average) {
             String list = Arrays.deepToString((Object[]) animal);
             // TODO: 11/25/19 parse string enter into Averige animaltable 
-            JSONArray.parse(list);
-            
-            logger.info(listt.size());
+            String[] aveAnimal = list.split("[ \\[\\],]+");
+            AverageAnimal newAveAnimal = new AverageAnimal(aveAnimal[1], aveAnimal[2], aveAnimal[3], (int) Double.parseDouble(aveAnimal[4]),(int) Double.parseDouble(aveAnimal[5]),(int) Double.parseDouble(aveAnimal[6]),(int) Double.parseDouble(aveAnimal[7]),(int) Double.parseDouble(aveAnimal[8]),(int) Double.parseDouble(aveAnimal[9]));
+            logger.info(aveAnimal[1]);
+            logger.info(newAveAnimal);
+            int i = averageAnimalDAO.create(newAveAnimal);
 
         }
+        assertEquals(2, averageAnimalDAO.getAll().size());
     }
 }
