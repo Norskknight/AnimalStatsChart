@@ -117,6 +117,12 @@ public class GenericDAOTest {
 
     @Test
     public void findByPropertyEqual() {
+        logger.info("find user testUser");
+        List<User> findUsers = userDao.findByPropertyEqual("userName","UnitTester0");
+
+        User user = findUsers.get(0);
+        logger.info("user found = " + user.getUserName());
+        assertEquals("UnitTester0",user.getUserName());
     }
 
     @Test
