@@ -23,12 +23,21 @@
     </web-resource-collection>
 
     <auth-constraint>
-      <role-name>Admin</role-name>
+      <role-name>admin</role-name>
     </auth-constraint>
   </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>UserRole</web-resource-name>
+      <url-pattern>/showUserAnimals.jsp</url-pattern>
+    </web-resource-collection>
 
+    <auth-constraint>
+      <role-name>user</role-name>
+    </auth-constraint>
+  </security-constraint>
   <security-role>
-    <role-name>Admin</role-name>
+    <role-name>admin</role-name>
   </security-role>
   <security-role>
     <role-name>user</role-name>
@@ -37,7 +46,6 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
-
 
 
 

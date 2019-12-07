@@ -12,20 +12,17 @@ import javax.persistence.*;
 public class Role {
 
     @Id
-    @Column(name = "idRole")
+    @Column(name = "roleId")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native",strategy = "native")
     private int iD;
 
-    @Column(name = "RoleName")
+    @Column(name = "name")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "UserId", referencedColumnName = "idUser", nullable = false)
+    @JoinColumn(name = "userName", referencedColumnName = "Username", nullable = false)
     private User user;
-
-    @Column(name = "UserName")
-    private String userName;
 
     @Override
     public String toString() {

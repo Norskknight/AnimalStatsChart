@@ -52,7 +52,7 @@ public class GenericDAOTest {
 
         role = new Role();
         role.setUser(testUser);
-        role.setUserName(testUser.getUserName());
+        role.setName(testUser.getUserName());
         role.setName("user");
         testUser.addRole(role);
 
@@ -92,7 +92,7 @@ public class GenericDAOTest {
         updateUserTest.setUserName("UpdateName");
         updateUserTest.setUserPass("something");
         role.setUser(updateUserTest);
-        role.setUserName(updateUserTest.getUserName());
+        role.setName(updateUserTest.getUserName());
         updateUserTest.addRole(role);
         userDao.create(updateUserTest);
 
@@ -107,7 +107,8 @@ public class GenericDAOTest {
     @Test
     public void deleteUser() {
        logger.info("delete user testUser");
-       List<User> findUsers = userDao.findByPropertyEqual("userName","testUser");
+       List<User> findUsers = userDao.findByPropertyEqual("userName","UnitTester0");
+
        User user = findUsers.get(0);
         logger.info("user found = " + user.getUserName());
         userDao.delete(user);
@@ -121,17 +122,12 @@ public class GenericDAOTest {
     @Test
     public void aveTest(){
         logger.info("ave test");
-        List average = animalDao.getAnimalAverageByGroup();
-        for ( Object animal : average) {
-            String list = Arrays.deepToString((Object[]) animal);
-            // TODO: 11/25/19 parse string enter into Averige animaltable 
-            String[] aveAnimal = list.split("[ \\[\\],]+");
-            AverageAnimal newAveAnimal = new AverageAnimal(aveAnimal[1], aveAnimal[2], aveAnimal[3], (int) Double.parseDouble(aveAnimal[4]),(int) Double.parseDouble(aveAnimal[5]),(int) Double.parseDouble(aveAnimal[6]),(int) Double.parseDouble(aveAnimal[7]),(int) Double.parseDouble(aveAnimal[8]),(int) Double.parseDouble(aveAnimal[9]));
-            logger.info(aveAnimal[1]);
-            logger.info(newAveAnimal);
-            int i = averageAnimalDAO.create(newAveAnimal);
-
-        }
+        animalDao.getAnimalAverageByGroup();
         assertEquals(2, averageAnimalDAO.getAll().size());
     }
+
+
+
+
+
 }

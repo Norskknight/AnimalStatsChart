@@ -8,8 +8,10 @@ import org.hibernate.*;
 import org.hibernate.Transaction;
 import org.hibernate.query.NativeQuery;
 
+import javax.jnlp.PersistenceService;
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
+import java.util.Arrays;
 import java.util.List;
 
 public class GenericDAO<T> {
@@ -79,7 +81,8 @@ public class GenericDAO<T> {
         session.close();
         return results;
     }
-    public List<T> getAnimalAverageByGroup() {
+
+    public void getAnimalAverageByGroup() {
         logger.info("get ave");
         Session session = getSession();
 
@@ -87,7 +90,21 @@ public class GenericDAO<T> {
         Query query = session.createNativeQuery(queryString);
 
         List<T> averageAnimals = ((NativeQuery) query).list();
+
+        //truncate DB
+        Transaction transaction = session.beginTransaction();
+        session.createSQLQuery("TRUNCATE TABLE AnimalStatsChart.AverageAnimals").executeUpdate();
+        transaction.commit();
         session.close();
-        return averageAnimals;
+        //enter into database aveanimals
+        GenericDAO<AverageAnimal> averageAnimalDAO = new GenericDAO(AverageAnimal.class);
+        for ( Object animal : averageAnimals) {
+            String list = Arrays.deepToString((Object[]) animal);
+            String[] aveAnimal = list.split("[ \\[\\],]+");
+            AverageAnimal newAveAnimal = new AverageAnimal(aveAnimal[1], aveAnimal[2], aveAnimal[3], (int) Double.parseDouble(aveAnimal[4]),(int) Double.parseDouble(aveAnimal[5]),(int) Double.parseDouble(aveAnimal[6]),(int) Double.parseDouble(aveAnimal[7]),(int) Double.parseDouble(aveAnimal[8]),(int) Double.parseDouble(aveAnimal[9]));
+            logger.info(aveAnimal[1]);
+            logger.info(newAveAnimal);
+            averageAnimalDAO.create(newAveAnimal);
+        }
     }
 }

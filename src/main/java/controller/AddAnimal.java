@@ -27,11 +27,21 @@ public class AddAnimal extends HttpServlet {
         GenericDAO<User> userDao = new GenericDAO<>(User.class);
         GenericDAO<Animal> animalGenericDAO = new GenericDAO<>(Animal.class);
         logger.debug("get list of users by id");
-
+        logger.debug("req remoteUser ="+req.getRemoteUser());
         //get list of users by UserName
         List<User> users = userDao.findByPropertyEqual("userName",req.getRemoteUser());
+        logger.debug(users);
         User user = users.get(0);
-        logger.debug(user);
+        logger.debug(user.getUserName()+req.getParameter("name")+
+                req.getParameter("class")+
+                req.getParameter("fiction")+
+                req.getParameter("health")+
+                req.getParameter("stamina")+
+                req.getParameter("strength")+
+                req.getParameter("agility")+
+                req.getParameter("dexterity")+
+                req.getParameter("intelligence"));
+
 
         //create animal from user information
         Animal animal = new Animal(

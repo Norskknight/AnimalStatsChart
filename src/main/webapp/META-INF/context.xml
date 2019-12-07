@@ -3,6 +3,6 @@
            driverName="com.mysql.jdbc.Driver"
            connectionURL="jdbc:mysql://localhost:3306/AnimalStatsChart?user=root&amp;password=student"
            userTable="Users" userNameCol="UserName" userCredCol="UserPass"
-           userRoleTable="Role" roleNameCol="RoleName">
+           userRoleTable="Role" roleNameCol="name">
     </Realm>
 </Context>
