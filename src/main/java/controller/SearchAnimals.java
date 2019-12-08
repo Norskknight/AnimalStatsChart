@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(name = "showUserAnimals", urlPatterns = {"/UserAnimals"})
+@WebServlet(name = "searchAnimals", urlPatterns = {"/SearchAnimals"})
 public class SearchAnimals extends HttpServlet {
     private Logger logger = LogManager.getLogger(this.getClass());
 
@@ -30,8 +30,15 @@ public class SearchAnimals extends HttpServlet {
         SearchByName(req, resp);
     }
 
-    private void SearchByName(HttpServletRequest req, HttpServletResponse resp) {
-        // TODO: 12/8/19 req get name search all animals by name 
+    private void SearchByName(HttpServletRequest req, HttpServletResponse resp)throws ServletException, IOException  {
+        GenericDAO<Animal> animalGenericDAODao = new GenericDAO<>(Animal.class);
+        List<Animal> animals = animalGenericDAODao.findByPropertyEqual("name",req.getParameter("name"));
+
+        req.setAttribute("Animals", animals );
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/search" + ".jsp");
+
+        dispatcher.forward(req, resp);
     }
 
 
