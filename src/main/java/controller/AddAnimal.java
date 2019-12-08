@@ -62,7 +62,7 @@ public class AddAnimal extends HttpServlet {
         logger.debug(id);
         String message = "<p> Latest Animal added" + animal.getName()+"</p>";
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/showUserAnimals.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/UserAnimals");
         // This will be available as ${message}
         req.setAttribute("message", message);
         dispatcher.forward(req, resp);

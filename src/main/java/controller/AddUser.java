@@ -46,7 +46,7 @@ public class AddUser extends HttpServlet {
         int userId = userDao.create(user);
         logger.debug("id="+userId);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/averageAnimals");
         dispatcher.forward(req, resp);
     }
 }

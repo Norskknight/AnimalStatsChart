@@ -30,6 +30,7 @@
     <web-resource-collection>
       <web-resource-name>UserRole</web-resource-name>
       <url-pattern>/showUserAnimals.jsp</url-pattern>
+      <url-pattern>/UserAnimals</url-pattern>
     </web-resource-collection>
 
     <auth-constraint>
@@ -44,7 +45,7 @@
   </security-role>
 
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>averageAnimals</welcome-file>
   </welcome-file-list>
 
 

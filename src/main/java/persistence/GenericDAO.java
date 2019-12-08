@@ -85,7 +85,7 @@ public class GenericDAO<T> {
     public void getAnimalAverageByGroup() {
         logger.info("get ave");
         Session session = getSession();
-
+        // TODO: 12/7/19 this is buged max gets the bigest value not the most values https://stackoverflow.com/questions/12446368/sql-returning-the-most-common-value-for-each-person
         String queryString = "select a.AnimalsName, max(a.AnimalsClass), max(a.AnimalsFiction), avg(a.AnimalsHealth), avg(a.AnimalsStamina),avg(a.AnimalsStrength), avg(a.AnimalsAgility), avg(a.AnimalsDexterity), avg(a.AnimalsIntelligence)from Animals a group by a.AnimalsName";
         Query query = session.createNativeQuery(queryString);
 

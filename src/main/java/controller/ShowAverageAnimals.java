@@ -23,11 +23,11 @@ public class ShowAverageAnimals extends HttpServlet {
 
     private Logger logger = LogManager.getLogger(this.getClass());
     GenericDAO<AverageAnimal> averageAnimalGenericDAO;
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        showAverageAnimals(req,resp);
-        return;
-    }
+    //@Override
+    //protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //    showAverageAnimals(req,resp);
+    //    return;
+    //}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
