@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(name = "showUserAnimals", urlPatterns = {"/UserAnimals"})
+@WebServlet(name = "deleteAnimal", urlPatterns = {"/deleteAnimal"})
 public class DeleteAnimal extends HttpServlet {
     private Logger logger = LogManager.getLogger(this.getClass());
 
@@ -25,8 +25,19 @@ public class DeleteAnimal extends HttpServlet {
         DeleteAnimalByid(req, resp);
     }
 
-    private void DeleteAnimalByid(HttpServletRequest req, HttpServletResponse resp) {
-        // TODO: 12/8/19 req get id delete animal
+    private void DeleteAnimalByid(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("animalId"));
+        logger.info(id);
+        GenericDAO<Animal> animalGenericDAO = new GenericDAO<>(Animal.class);
+        Animal animal = animalGenericDAO.getById(id);
+        logger.info(animal.getId());
+        animalGenericDAO.delete(animal);
+        String message = animal.getName() + " with id " +animal.getId()+ " Has been deleted";
+        req.setAttribute("message", message);
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/admin");
+
+        dispatcher.forward(req, resp);
     }
 
 

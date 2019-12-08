@@ -5,7 +5,7 @@
 <body>
 <%@include file="nav.jsp" %>
 
-
+<div class="deleteMessage">${message}</div>
 <table>
     <thead>
     <th class="th-sm">ID</th>

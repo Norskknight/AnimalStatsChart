@@ -15,7 +15,6 @@ public class AverageAnimal {
     public AverageAnimal() {
     }
 
-    // TODO: 11/6/19 get Animal stats for an animal by name
     public AverageAnimal(String name, String animalClass, String fiction, int health, int stamina, int strength, int agility, int dexterity, int intelligence) {
         this.name = name;
         this.animalClass = animalClass;
@@ -82,5 +81,4 @@ public class AverageAnimal {
                 '}';
     }
 
-// TODO: 11/6/19 create Standard Deviation removal method for array lists
 }
