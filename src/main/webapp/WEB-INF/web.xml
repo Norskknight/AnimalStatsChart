@@ -20,6 +20,7 @@
     <web-resource-collection>
       <web-resource-name>AdminRole</web-resource-name>
       <url-pattern>/admin.jsp</url-pattern>
+      <url-pattern>/admin</url-pattern>
     </web-resource-collection>
 
     <auth-constraint>
@@ -32,6 +33,7 @@
       <web-resource-name>UserRole</web-resource-name>
       <url-pattern>/showUserAnimals.jsp</url-pattern>
       <url-pattern>/UserAnimals</url-pattern>
+      <url-pattern>/updateAnimal</url-pattern>
     </web-resource-collection>
 
     <auth-constraint>
