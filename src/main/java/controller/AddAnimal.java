@@ -42,7 +42,7 @@ public class AddAnimal extends HttpServlet {
                 req.getParameter("dexterity")+
                 req.getParameter("intelligence"));
 
-
+// TODO: 12/10/19 adding too much gives 500 string format 
         //create animal from user information
         Animal animal = new Animal(
                 req.getParameter("name").replaceAll(" ", "_").toLowerCase(),

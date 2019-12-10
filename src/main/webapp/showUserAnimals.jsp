@@ -87,6 +87,7 @@
                     <td>${animal.agility}</td>
                     <td>${animal.dexterity}</td>
                     <td>${animal.intelligence}</td>
+                    <<a href="updateAnimal.jsp?id=${animal.id}"></a>>
                 </tr>
             </c:forEach>
             <tfoot>
