@@ -100,6 +100,7 @@ public class GenericDAO<T> {
         GenericDAO<AverageAnimal> averageAnimalDAO = new GenericDAO(AverageAnimal.class);
         for ( Object animal : averageAnimals) {
             String list = Arrays.deepToString((Object[]) animal);
+            logger.info(list);
             String[] aveAnimal = list.split("[ \\[\\],]+");
             AverageAnimal newAveAnimal = new AverageAnimal(aveAnimal[1], aveAnimal[2], aveAnimal[3], (int) Double.parseDouble(aveAnimal[4]),(int) Double.parseDouble(aveAnimal[5]),(int) Double.parseDouble(aveAnimal[6]),(int) Double.parseDouble(aveAnimal[7]),(int) Double.parseDouble(aveAnimal[8]),(int) Double.parseDouble(aveAnimal[9]));
             logger.info(aveAnimal[1]);

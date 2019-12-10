@@ -5,24 +5,21 @@
     <body>
         <%@include file="nav.jsp" %>
 
-
-    <table>
-
+        <div class="container table-responsive w-75">
+    <table id="datatable" class="table table-striped table-bordered table-sm" cellspacing="0">
             <thead>
-            <th class="th-sm">ID</th>
             <th class="th-sm">Name</th>
-            <th class="th-sm">animalClass</th>
-            <th class="th-sm">fiction</th>
-            <th class="th-sm">health</th>
-            <th class="th-sm">stamina</th>
-            <th class="th-sm">strength</th>
-            <th class="th-sm">agility</th>
-            <th class="th-sm">dexterity</th>
-            <th class="th-sm">intelligence</th>
+            <th class="th-sm">Class</th>
+            <th class="th-sm">Fiction</th>
+            <th class="th-sm">Health</th>
+            <th class="th-sm">Stamina</th>
+            <th class="th-sm">Strength</th>
+            <th class="th-sm">Agility</th>
+            <th class="th-sm">Dexterity</th>
+            <th class="th-sm">Intelligence</th>
             </thead>
         <c:forEach var="animal" items="${averageAnimals}">
         <tr>
-            <td>${animal.id}</td>
             <td>${animal.name}</td>
             <td>${animal.animalClass}</td>
             <td>${animal.fiction}</td>
@@ -34,6 +31,25 @@
             <td>${animal.intelligence}</td>
         </tr>
     </c:forEach>
+        <tfoot>
+        <th class="th-sm">Name</th>
+        <th class="th-sm">Class</th>
+        <th class="th-sm">Fiction</th>
+        <th class="th-sm">Health</th>
+        <th class="th-sm">Stamina</th>
+        <th class="th-sm">Strength</th>
+        <th class="th-sm">Agility</th>
+        <th class="th-sm">Dexterity</th>
+        <th class="th-sm">Intelligence</th>
+        </tfoot>
     </table>
+        </div>
     </body>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#datatable').DataTable();
+        });
+    </script>
+
 </html>

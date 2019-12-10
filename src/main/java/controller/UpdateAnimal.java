@@ -26,7 +26,6 @@ public class UpdateAnimal extends HttpServlet {
     }
 
     private void UpdateAnimal(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // TODO: 12/8/19 req get animal id and params update animal
         logger.info(req.getParameter("job") + " Animal by id");
         GenericDAO<Animal> animalGenericDAO = new GenericDAO<>(Animal.class);
         Animal animal = animalGenericDAO.getById(Integer.parseInt(req.getParameter("id")));
@@ -51,7 +50,7 @@ public class UpdateAnimal extends HttpServlet {
             } else {
                 logger.info("Update Animal by id");
 
-                animal.setName(req.getParameter("id"));
+                animal.setName(req.getParameter("name"));
                 animal.setAnimalClass(req.getParameter("class"));
                 animal.setFiction(req.getParameter("fiction"));
                 animal.setHealth(Integer.parseInt(req.getParameter("health")));

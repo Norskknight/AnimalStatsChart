@@ -10,10 +10,10 @@
 
 
     <label for="name">AnimalName</label>
-    <input required type="text" id="name" name="name" value="${animal.id}">
+    <input required type="text" id="name" name="name" value="${animal.name}">
     <br>
     <label for="class">AnimalClass</label>
-    <input required type="text" id="class" name="class" value="${animal.name}">
+    <input required type="text" id="class" name="class" value="${animal.animalClass}">
     <br>
     <label for="fiction">Fiction or nonFiction</label>
     <input required type="text" id="fiction" name="fiction" value="${animal.fiction}">

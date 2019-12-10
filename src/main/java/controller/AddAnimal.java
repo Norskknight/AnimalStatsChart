@@ -45,9 +45,9 @@ public class AddAnimal extends HttpServlet {
 
         //create animal from user information
         Animal animal = new Animal(
-                req.getParameter("name"),
-                req.getParameter("class"),
-                req.getParameter("fiction"),
+                req.getParameter("name").replaceAll(" ", "_").toLowerCase(),
+                req.getParameter("class").toLowerCase(),
+                req.getParameter("fiction").toLowerCase(),
                 Integer.parseInt(req.getParameter("health")),
                 Integer.parseInt(req.getParameter("stamina")),
                 Integer.parseInt(req.getParameter("strength")),
