@@ -71,6 +71,7 @@
         <th class="th-sm">agility</th>
         <th class="th-sm">dexterity</th>
         <th class="th-sm">intelligence</th>
+        <th class="th-sm">Go To</th>
         </thead>
         <c:forEach var="animal" items="${userAnimals}">
             <tr>
@@ -84,6 +85,7 @@
                 <td>${animal.agility}</td>
                 <td>${animal.dexterity}</td>
                 <td>${animal.intelligence}</td>
+                <td><a href="/showAnimal?id=${animal.id}">Go To</a> </td>
             </tr>
         </c:forEach>
     </table>

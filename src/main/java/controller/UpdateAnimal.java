@@ -21,18 +21,54 @@ public class UpdateAnimal extends HttpServlet {
     private Logger logger = LogManager.getLogger(this.getClass());
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        SearchByName(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        SearchByName(req, resp);
+        UpdateAnimal(req, resp);
     }
 
-    private void SearchByName(HttpServletRequest req, HttpServletResponse resp) {
+    private void UpdateAnimal(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // TODO: 12/8/19 req get animal id and params update animal
+        logger.info(req.getParameter("job") + " Animal by id");
+        GenericDAO<Animal> animalGenericDAO = new GenericDAO<>(Animal.class);
+        Animal animal = animalGenericDAO.getById(Integer.parseInt(req.getParameter("id")));
+        RequestDispatcher dispatcher;
+
+        if (!req.getRemoteUser().equals(animal.getUser().getUserName())){
+            String message = animal.getName() +" with ID: " + animal.getId() + " is not your animal";
+            req.setAttribute("message" ,message);
+
+            dispatcher = req.getRequestDispatcher("/UserAnimals");
+            dispatcher.forward(req, resp);
+        } else {
+
+            if (req.getParameter("job").equals("Delete")){
+                logger.info("Delete Animal by id");
+                animalGenericDAO.delete(animal);
+
+                String message = animal.getName() +" with ID: " + animal.getId() + " Has been deleted";
+                req.setAttribute("message" ,message);
+
+                dispatcher = req.getRequestDispatcher("/UserAnimals");
+            } else {
+                logger.info("Update Animal by id");
+
+                animal.setName(req.getParameter("id"));
+                animal.setAnimalClass(req.getParameter("class"));
+                animal.setFiction(req.getParameter("fiction"));
+                animal.setHealth(Integer.parseInt(req.getParameter("health")));
+                animal.setStamina(Integer.parseInt(req.getParameter("stamina")));
+                animal.setStrength(Integer.parseInt(req.getParameter("strength")));
+                animal.setAgility(Integer.parseInt(req.getParameter("agility")));
+                animal.setDexterity(Integer.parseInt(req.getParameter("dexterity")));
+                animal.setIntelligence(Integer.parseInt(req.getParameter("intelligence")));
+
+                animalGenericDAO.update(animal);
+
+
+                String message = animal.getName() +" with ID: " + animal.getId() + " Has been Updated";
+                req.setAttribute("message" ,message);
+                dispatcher = req.getRequestDispatcher("/UserAnimals");
+            }
+            dispatcher.forward(req, resp);
+        }
     }
-
-
 }
