@@ -6,8 +6,6 @@
 <%@include file="nav.jsp" %>
 
 
-
-
     <div class="container d-flex justify-content-center">
 
         <form action="addAnimal" method="post">
@@ -75,6 +73,7 @@
             <th class="th-sm">Agility</th>
             <th class="th-sm">Dexterity</th>
             <th class="th-sm">Intelligence</th>
+            <th class="th-sm">Go To</th>
             </thead>
             <c:forEach var="animal" items="${userAnimals}">
                 <tr>
@@ -87,7 +86,7 @@
                     <td>${animal.agility}</td>
                     <td>${animal.dexterity}</td>
                     <td>${animal.intelligence}</td>
-                    <<a href="updateAnimal.jsp?id=${animal.id}"></a>>
+                    <td><a href="/showAnimal?id=${animal.id}">Go To</a></td>
                 </tr>
             </c:forEach>
             <tfoot>
@@ -100,6 +99,7 @@
             <th class="th-sm">Agility</th>
             <th class="th-sm">Dexterity</th>
             <th class="th-sm">Intelligence</th>
+            <th class="th-sm">Go To</th>
             </tfoot>
         </table>
     </div>
